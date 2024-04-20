@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # using puppet to connect without password
 
-file { '/home/your_username/.ssh/config':
+file { '/home/www.data/.ssh/config':
     ensure => 'present',
     owner  => 'www.data',
     group  => 'www.data',
