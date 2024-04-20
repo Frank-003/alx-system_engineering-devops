@@ -2,10 +2,10 @@
 # using puppet to connect without password
 
 file { '/home/your_username/.ssh/config':
-    ensure => file,
-    owner  => 'your_username',
-    group  => 'your_group',
-    mode   => '0600',
+    ensure => 'present',
+    owner  => 'www.data',
+    group  => 'www.data',
+    mode   => '0744',
     content => "Host your_server_address\n\
                 \tIdentityFile ~/.ssh/school\n\
                 \tPasswordAuthentication no\n",
