@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 # using puppet to connect without password
 
-file { '/home/www.data/.ssh/config':
-    ensure => 'present',
-    owner  => 'www.data',
-    group  => 'www.data',
-    mode   => '0744',
-    content => "Host your_server_address\n\
-                \tIdentityFile ~/.ssh/school\n\
-                \tPasswordAuthentication no\n",
+file { '/etc/ssh/.ssh/config':
+    ensure => present
 }
+
+file_line {'Turn off password auth':
+    path    => '/etc/ssh/.ssh/config',
+    line    => 'PasswordAuthentication no',
+    match   => '^#PasswordAuthecation',
+}
+
+file_line {'Declare identity file',
+    path    => '/etc/ssh/.ssh/config',
+    line    => 'IdentityFile ~/.ssh/school',
+    match   => '^#Identityfile',
+
