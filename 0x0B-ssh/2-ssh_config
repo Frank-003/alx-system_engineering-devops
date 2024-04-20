@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+Host your_server_address
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+
