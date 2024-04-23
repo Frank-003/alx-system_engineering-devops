@@ -3,15 +3,18 @@
 # Where Ngnix should be listened on porto 80
 # Page where the Hello World string will be contained
 
-apt-get update
+echo -e "Updating package list"
 
-apt-get install -y nginx
+sudo apt-get update -y
+ echo -e "installing Nginx.\n"
 
-service nginx start
+sudo apt-get install  Nginx -y
+
+sudo service nginx start
 
 echo "server {
     listen 80;
-    server_name _web-01; 
+    server_name _; 
     root /var/www/html;
 
     location / {
