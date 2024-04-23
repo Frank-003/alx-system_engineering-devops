@@ -9,6 +9,8 @@ echo -e "Updating package list"
 sudo apt-get update -y -qq
  echo -e "installing Nginx.\n"
 
+ echo -e "\nSettings up some minor stuff.\n"
+
 sudo apt-get install  Nginx -y
 
 sudo service nginx start
