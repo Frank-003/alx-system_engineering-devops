@@ -14,7 +14,7 @@ sudo apt-get update -y -qq && \
 
 sudo service nginx start
 
-sudo ufw allow 'Ngnix HTTP'
+sudo ufw allow 'Nginx HTTP'
 
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
