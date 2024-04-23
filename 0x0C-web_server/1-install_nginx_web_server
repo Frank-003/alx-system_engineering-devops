@@ -15,15 +15,13 @@ sudo service nginx start
 
 sudo ufw allow 'Ngnix HTTP'
 
-echo "server {
-    listen 80;
-    server_name _; 
-    root /var/www/html;
+sudo chown -R "SUSER":"SUSER" /var/www/html
+sudo chmod -R 755 /var/www
 
-    location / {
-        return 200 'Hello World!';
-    }
-}" > /etc/nginx/sites-available/default
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+echo -e "Hello World! | dd status:none ofs/var/www/html/index.nginx-debian.html
 
 sudo service nginx restart
-nginx -s reload
+
+echo -e "\nCompleted. \n"
