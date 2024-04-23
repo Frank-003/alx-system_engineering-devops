@@ -4,14 +4,13 @@
 # Page where the Hello World string will be contained
 #
 
-echo -e "Updating package list"
+echo -e "Updating and installing Nginx.\n"
 
-sudo apt-get update -y -qq
- echo -e "installing Nginx.\n"
+sudo apt-get update -y -qq && \
+	sudo apt-get install nginx -y
+
 
  echo -e "\nSettings up some minor stuff.\n"
-
-sudo apt-get install  Nginx -y
 
 sudo service nginx start
 
@@ -22,8 +21,8 @@ sudo chmod -R 755 /var/www
 
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
-echo -e "Hello World! | dd status:none ofs/var/www/html/index.nginx-debian.html
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 
 sudo service nginx restart
 
-echo -e "\nCompleted. \n"
+echo -e "\nCompleted.✅\n"
