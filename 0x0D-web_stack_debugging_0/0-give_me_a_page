@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Starting apache2 inside the docker
-service apache2 service
-^C
+# Start aparche2 inside docker
+# page conatining Hello Holberton
+service apache2 start
