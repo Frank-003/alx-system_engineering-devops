@@ -4,6 +4,9 @@
 # Page where the Hello World string will be contained
 
 apt-get update
+
+apt-get install -y nginx
+
 service nginx start
 
 echo "server {
