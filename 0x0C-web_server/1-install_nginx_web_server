@@ -2,15 +2,18 @@
 # Configure a new ubuntu machine by installing
 # Where Ngnix should be listened on porto 80
 # Page where the Hello World string will be contained
+#
 
 echo -e "Updating package list"
 
-sudo apt-get update -y
+sudo apt-get update -y -qq
  echo -e "installing Nginx.\n"
 
 sudo apt-get install  Nginx -y
 
 sudo service nginx start
+
+sudo ufw allow 'Ngnix HTTP'
 
 echo "server {
     listen 80;
@@ -22,4 +25,5 @@ echo "server {
     }
 }" > /etc/nginx/sites-available/default
 
+sudo service nginx restart
 nginx -s reload
