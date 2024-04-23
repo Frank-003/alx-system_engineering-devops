@@ -11,7 +11,7 @@ service nginx start
 
 echo "server {
     listen 80;
-    server_name _;
+    server_name _web-01; 
     root /var/www/html;
 
     location / {
