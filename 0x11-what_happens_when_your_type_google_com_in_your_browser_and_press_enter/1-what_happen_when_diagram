@@ -1,0 +1,15 @@
+ Description of the elements you would include in such a diagram:
+
+DNS Resolution: Start with the user's device sending a DNS request to resolve "www.google.com" to its corresponding IP address.
+
+Encrypted Traffic: Once the IP address is resolved, the user's device initiates an encrypted connection (HTTPS) to the server IP on the appropriate port (typically port 443 for HTTPS).
+
+Firewall: The encrypted traffic passes through a firewall, which examines and filters the packets to ensure security compliance.
+
+Load Balancer: After passing through the firewall, the traffic is distributed via a load balancer to one of the available web servers in the server farm.
+
+Web Server: The web server receives the request and serves the requested web page. This involves fetching HTML, CSS, JavaScript, images, etc., and compiling them into a response.
+
+Application Server: For dynamic content, the web server may communicate with an application server. This server generates content based on the user's request, which may involve executing code, accessing databases, or interfacing with other services.
+
+Database: If required, the application server interacts with a database to retrieve or store data necessary for fulfilling the request. This data could be anything from search results to user information.
