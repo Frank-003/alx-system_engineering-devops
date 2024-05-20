@@ -11,12 +11,14 @@ def fetch_user_data(user_id):
     # Fetch user information
     user_response = requests.get(
         f"https://jsonplaceholder.typicode.com/users/{user_id}")
+    user_response.raise_for_status()
     user_data = user_response.json()
     username = user_data['username']
 
     # Fetch user's tasks
     tasks_response = requests.get(
         f"https://jsonplaceholder.typicode.com/users/{user_id}/todos")
+    tasks_response.raise_for_status()
     tasks_data = tasks_response.json()
 
     # Prepare the data to be exported
