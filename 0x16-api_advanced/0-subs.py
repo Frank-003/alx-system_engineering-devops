@@ -1,20 +1,17 @@
 #!/usr/bin/python3
-import requests
+"""Module for task 0"""
+
 
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'YourBotName'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    
-    # Check if the status code is 200 (OK)
-    if response.status_code == 200:
-        data = response.json()
-        return data['data']['subscribers']
-    else:
-        # Return 0 if the subreddit is invalid or there is another issue
+    """Queries the Reddit API and returns the number of subscribers
+    to the subreddit"""
+    import requests
+
+    sub_info = requests.get("https://www.reddit.com/r/{}/about.json"
+                            .format(subreddit),
+                            headers={"User-Agent": "My-User-Agent"},
+                            allow_redirects=False)
+    if sub_info.status_code >= 300:
         return 0
 
-# Example usage:
-subreddit = 'python'
-print(number_of_subscribers(subreddit))  # Output the number of subscribers for the 'python' subreddit
-
+    return sub_info.json().get("data").get("subscribers")
