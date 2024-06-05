@@ -1,15 +1,6 @@
-# 0-strace_is_your_friend.pp
+# Fixes bad `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
 
-file { '/var/log/apache2':
-  ensure  => 'directory',
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0755',
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
-
-service { 'apache2':
-  ensure => 'running',
-  enable => true,
-  subscribe => File['/var/log/apache2'],
-}
-
