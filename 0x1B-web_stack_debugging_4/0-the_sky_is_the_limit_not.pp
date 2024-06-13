@@ -1,16 +1,13 @@
-http {
-    ...
-    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
+# Increases the amount of traffic an Nginx server can handle.
 
-    server {
-        ...
-        location / {
-            proxy_cache my_cache;
-            proxy_pass http://localhost:your_app_port;
-            proxy_cache_valid 200 302 10m;
-            proxy_cache_valid 404 1m;
-            proxy_cache_bypass $http_cache_control;
-        }
-    }
+# Increase the ULIMIT of the default file
+exec { 'fix--for-nginx':
+  command => 'sed -i "s/15/4096/" /etc/default/nginx',
+  path    => '/usr/local/bin/:/bin/'
+} ->
+
+# Restart Nginx
+exec { 'nginx-restart':
+  command => 'nginx restart',
+  path    => '/etc/init.d/'
 }
-
