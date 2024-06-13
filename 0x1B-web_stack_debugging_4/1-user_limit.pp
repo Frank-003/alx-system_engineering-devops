@@ -1,16 +1,13 @@
-http {
-    ...
-    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
+# Enable the user holberton to login and open files without error.
 
-    server {
-        ...
-        location / {
-            proxy_cache my_cache;
-            proxy_pass http://holberton hard:your_app_port;
-            proxy_cache_valid 200 302 10m;
-            proxy_cache_valid 404 1m;
-            proxy_cache_bypass $http_cache_control;
-        }
-    }
+# Increase hard file limit for Holberton user.
+exec { 'increase-hard-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton hard/s/5/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/'
 }
 
+# Increase soft file limit for Holberton user.
+exec { 'increase-soft-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton soft/s/4/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/'
+}
